@@ -1,0 +1,23 @@
+.login {
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.button__login {
+    width: 100%;
+    height: 4rem;
+}
+
+.content__login {
+    height: calc(100vh - 4rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    padding: 2rem 0;
+    width: 100px;
+    height: 1s00px;
+}

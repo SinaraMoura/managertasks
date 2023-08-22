@@ -1,0 +1,15 @@
+.todos__item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.checked {
+    text-decoration: line-through;
+}
+
+.todo__text {
+    margin-right: auto;
+}
