@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import logoImage from '../../assets/logo.svg';
 import { getItem, removeItem } from '../../storage';
 import './styles.css';
 
@@ -22,7 +21,7 @@ export default function Header() {
     return (
         <header className='header'>
             <div className="container header-container">
-                <img src={logoImage} alt="logotipo" className='logo' />
+                <h1 className='logo'>Task Manager</h1>
                 <nav className='navigation'>
                     <span>{user} | </span>
                     <NavLink to="/todos" className={handleActiveLink}>Todo</NavLink>

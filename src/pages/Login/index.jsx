@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logoImage from '../../assets/logo.svg';
+import background from '../../assets/background.jpg'
 import api from '../../service/api';
 import { getItem, setItem } from '../../storage';
 import './styles.css';
@@ -52,7 +52,7 @@ export default function Login() {
         <main className='container'>
             <section className="content__login">
                 <form className="login" onSubmit={handleSubmit}>
-                    <img src={logoImage} alt="logo cubos academy" className='logo' />
+                    <h1 className='logo'>Task Manager</h1>
                     <input name="email" type="email" placeholder="Email" className='input' onChange={handleForm} />
                     <input name="password" type="password" placeholder="Senha**" className='input' onChange={handleForm} />
                     <button className='button button__login'>Entrar</button>
