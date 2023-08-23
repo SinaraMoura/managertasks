@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import api from '../../service/api';
 import { getItem, setItem } from '../../storage';
 import './styles.css';
+import { toast } from 'react-toastify';
 
 export default function Login() {
 
@@ -29,16 +30,14 @@ export default function Login() {
             const response = await api.post('/login', {
                 ...form
             })
-            console.log("🚀 ~ file: index.jsx:33 ~ handleSubmit ~ response:", response.data)
             const { token, name } = response.data;
-
 
             setItem('token', token);
             setItem('user', name)
 
             navigate('/todos');
-        } catch (e) {
-            console.log(e)
+        } catch (error) {
+            toast.error(error?.response?.data?.message)
         }
     }
     useEffect(() => {

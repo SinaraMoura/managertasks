@@ -1,5 +1,6 @@
 .header {
     background-color: var(--white-900);
+    width: 100%;
 }
 
 .header-container {

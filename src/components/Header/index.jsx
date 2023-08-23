@@ -25,7 +25,7 @@ export default function Header() {
                 <nav className='navigation'>
                     <span>{user} | </span>
                     <NavLink to="/todos" className={handleActiveLink}>Todo</NavLink>
-                    <NavLink to="/" onClick={logoff} className={handleActiveLink}>Sair</NavLink>
+                    <NavLink to="/" onClick={logoff} className={handleActiveLink}>Logout</NavLink>
                 </nav>
             </div>
         </header>

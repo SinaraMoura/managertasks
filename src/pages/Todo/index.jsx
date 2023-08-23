@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import TodoItem from '../../components/TodoItem';
 import api from '../../service/api';
 import { getItem } from '../../storage';
+import { toast } from 'react-toastify';
 
 export default function Todo() {
     const token = getItem('token')
@@ -19,10 +20,9 @@ export default function Todo() {
                 headers
             });
             setTodos(response.data)
-        } catch (e) {
-            console.log(e)
+        } catch (error) {
+            toast.error(error?.response?.data?.message)
         }
-
     }
     useEffect(() => {
         loadTodos()
@@ -43,8 +43,8 @@ export default function Todo() {
 
             addTodoItem()
 
-        } catch (e) {
-            console.log(e)
+        } catch (error) {
+            toast.error(error?.response?.data?.message)
         }
     }
 
@@ -57,19 +57,19 @@ export default function Todo() {
             const response = await api.post('/todos/register', newTodoItem, {
                 headers
             });
-            
+            console.log("🚀 ~ file: index.jsx:59 ~ addTodoItem ~ response:", response)
+
             setTodos([...todos, response.data])
             clearTodoItem()
 
-        } catch (e) {
-            console.log(e)
+        } catch (error) {
+            toast.error(error?.response?.data?.message)
         }
     }
 
     function selectedTodoEdit(todo) {
         setTodoEdit(todo);
         todoItem.current.value = todo.task
-
     }
     async function updateTodoItem(newTodoItem) {
         try {
@@ -77,23 +77,21 @@ export default function Todo() {
                 headers
             })
             const todosLocal = [...todos]
-            const selectedTodoItem = todosLocal.reduce((acc, todo) => todo.id === newTodoItem.id ? acc = todo : acc, null)
-            console.log('selectedTodoItem', selectedTodoItem)
+            const selectedTodoItem = todosLocal.reduce((acc, todo) => todo.id === newTodoItem.id ? acc = todo : acc, null);
+
             selectedTodoItem.task = newTodoItem.task
             selectedTodoItem.active = newTodoItem.active
-            console.log(selectedTodoItem)
-            setTodos(todosLocal);
 
+            setTodos(todosLocal);
             clearTodoItem()
 
-        } catch (e) {
-            console.log(e)
+        } catch (error) {
+            toast.error(error?.response?.data?.message)
         }
 
     }
 
     function checkedTodoItem(todo) {
-
         updateTodoItem({
             ...todo,
             active: !todo.active
@@ -111,15 +109,15 @@ export default function Todo() {
             const todosLocal = [...todos]
             const newTodos = todosLocal.filter(todo => todo.id !== id)
             setTodos(newTodos)
-        } catch (e) {
-            console.log(e)
+        } catch (error) {
+            toast.error(error?.response?.data?.message)
         }
     }
 
     return (
         <main className='container'>
             <section className="content">
-                <h1 className="title">Lista de Afazeres</h1>
+                <h1 className="title">To Do List</h1>
                 <form className='todos__form' onSubmit={handleSubmit}>
                     <input type="text" className='input' ref={todoItem} />
                 </form>
