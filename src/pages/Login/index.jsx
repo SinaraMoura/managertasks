@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import background from '../../assets/background.jpg'
 import api from '../../service/api';
 import { getItem, setItem } from '../../storage';
 import './styles.css';
@@ -49,7 +48,7 @@ export default function Login() {
     }, [])
 
     return (
-        <main className='container'>
+        <main className='container container__login'>
             <section className="content__login">
                 <form className="login" onSubmit={handleSubmit}>
                     <h1 className='logo'>Task Manager</h1>

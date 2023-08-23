@@ -57,6 +57,7 @@ export default function Todo() {
             const response = await api.post('/todos/register', newTodoItem, {
                 headers
             });
+            
             setTodos([...todos, response.data])
             clearTodoItem()
 

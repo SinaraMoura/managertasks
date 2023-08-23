@@ -1,3 +1,9 @@
+.container__login {
+    background-image: url('../../assets/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .login {
     max-width: 300px;
     margin: auto;
@@ -17,5 +23,8 @@
 }
 
 .logo {
-    padding: 2rem 0;
+    border: 2px solid var(--pink-800);
+    border-radius: 8px;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
 }
