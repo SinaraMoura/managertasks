@@ -7,28 +7,35 @@ import './styles.css';
 import { toast } from 'react-toastify';
 
 export default function Login() {
-
-    const [form, setForm] = useState({
+    const [formSignup, setFormSignup] = useState({ name: '', email: '', password: '' });
+    const [formLogin, setFormLogin] = useState({
         email: '',
         password: ''
     })
 
     const navigate = useNavigate();
 
-    function handleForm(e) {
-        setForm({
-            ...form,
+    function handleFormLogin(e) {
+        setFormLogin({
+            ...formLogin,
             [e.target.name]: e.target.value
         })
     }
-    async function handleSubmit(e) {
+
+    function handleFormSignup(e) {
+        setFormSignup({
+            ...formSignup,
+            [e.target.name]: e.target.value
+        })
+    }
+    async function handleSubmitLogin(e) {
         try {
             e.preventDefault()
 
-            if (!form.email || !form.password) return
+            if (!formLogin.email || !formLogin.password) return
 
             const response = await api.post('/login', {
-                ...form
+                ...formLogin
             })
             const { token, name } = response.data;
 
@@ -36,6 +43,21 @@ export default function Login() {
             setItem('user', name)
 
             navigate('/todos');
+        } catch (error) {
+            toast.error(error?.response?.data?.message)
+        }
+    }
+
+    async function handleSubmitSignup(e) {
+
+        try {
+            e.preventDefault();
+
+            if (!formSignup.name || !formSignup.email || !formSignup.password) return;
+
+            const response = await api.post('/user/register', { ...formSignup });
+
+            toast.success(response?.data?.message);
         } catch (error) {
             toast.error(error?.response?.data?.message)
         }
@@ -48,13 +70,71 @@ export default function Login() {
 
     return (
         <main className='container container__login'>
-            <section className="content__login">
-                <form className="login" onSubmit={handleSubmit}>
-                    <h1 className='logo'>Task Manager</h1>
-                    <input name="email" type="email" placeholder="Email" className='input' onChange={handleForm} />
-                    <input name="password" type="password" placeholder="Senha**" className='input' onChange={handleForm} />
-                    <button className='button button__login'>Entrar</button>
-                </form>
+            <section className="container">
+                <div className="login">
+                    <strong>Welcome!</strong>
+                    <span>Sign in to your account</span>
+
+                    <form onSubmit={handleSubmitLogin}>
+
+                        <div className="form">
+                            <div className="form-row">
+
+                                <label className="form-label" htmlFor="email" >E-mail</label>
+                                <input
+                                    name="email"
+                                    type="email"
+                                    placeholder="enter your e-mail"
+                                    onChange={handleFormLogin}
+                                    className="form-text" />
+                            </div>
+                            <div className="form-row">
+
+                                <label className="form-label" htmlFor="password">Password</label>
+                                <input
+                                    name="password"
+                                    type="password"
+                                    className="form-text"
+                                    placeholder="enter your password"
+                                    onChange={handleFormLogin}
+                                />
+                            </div>
+
+                            <div className="form-row button-login">
+                                <button className="btn btn-login">Sign in</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div className="register">
+                    <i className="fas fa-user-circle"></i>
+                    <strong>Create account!</strong>
+                    <form onSubmit={handleSubmitSignup}>
+                        <fieldset>
+                            <div className="form">
+                                <div className="form-row">
+                                    <i className="fas fa-user"></i>
+                                    <label className="form-label" htmlFor="name" >Name</label>
+                                    <input name="name" type="text" className="form-text" placeholder="enter your name" onChange={handleFormSignup} />
+                                </div>
+                                <div className="form-row">
+                                    <i className="fas fa-envelope"></i>
+                                    <label className="form-label" htmlFor="email">E-mail</label>
+                                    <input name="email" type="email" className="form-text" placeholder="enter your e-mail" onChange={handleFormSignup} />
+                                </div>
+                                <div className="form-row">
+                                    <i className="fas fa-lock"></i>
+                                    <label className="form-label" htmlFor="password">Password</label>
+                                    <input name="password" type="password" className="form-text" placeholder="enter a password" onChange={handleFormSignup} />
+                                </div>
+                                <div className="form-row button-login">
+                                    <button className="btn btn-login">Create</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
             </section>
         </main>
     )
