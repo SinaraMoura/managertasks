@@ -7,10 +7,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 50px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
-.logo {
-    color: var(--pink-800);
+.logo,
+.navigation,
+.title {
+    background-image: linear-gradient(109.6deg, #7412cb 11.2%, #e62e83 91.2%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: black;
 }
 
 .navigation {
@@ -19,7 +28,7 @@
     text-transform: uppercase;
 }
 
-.navigation__item--active,
-.navigation__item:hover {
-    color: var(--pink-800);
+.navigation .navigation_link,
+.navigation span {
+    font-weight: bold;
 }

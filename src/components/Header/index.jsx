@@ -5,13 +5,6 @@ import './styles.css';
 export default function Header() {
 
     const user = getItem('user');
-    function handleActiveLink({ isActive }) {
-        if (isActive) {
-            return 'navigation__item navigation__item--active'
-        } else {
-            return 'navigation__item'
-        }
-    }
 
     function logoff() {
         removeItem('user');
@@ -20,12 +13,12 @@ export default function Header() {
 
     return (
         <header className='header'>
-            <div className="container header-container">
+            <div className=" header-container">
                 <h1 className='logo'>Task Manager</h1>
                 <nav className='navigation'>
-                    <span>{user} | </span>
-                    <NavLink to="/todos" className={handleActiveLink}>Todo</NavLink>
-                    <NavLink to="/" onClick={logoff} className={handleActiveLink}>Logout</NavLink>
+                    <span>{user}  </span>
+                    <span>|</span>
+                    <NavLink to="/" onClick={logoff} className='navigation_link'>Logout</NavLink>
                 </nav>
             </div>
         </header>
