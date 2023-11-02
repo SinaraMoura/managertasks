@@ -72,6 +72,7 @@ export default function Login() {
         <main className='container container__login'>
             <section className="container">
                 <div className="login">
+                    <i className="fas fa-sign-in-alt"></i>
                     <strong>Welcome!</strong>
                     <span>Sign in to your account</span>
 
@@ -79,7 +80,7 @@ export default function Login() {
 
                         <div className="form">
                             <div className="form-row">
-
+                                <i className="fas fa-envelope"></i>
                                 <label className="form-label" htmlFor="email" >E-mail</label>
                                 <input
                                     name="email"
@@ -89,7 +90,7 @@ export default function Login() {
                                     className="form-text" />
                             </div>
                             <div className="form-row">
-
+                                <i className="fas fa-eye"></i>
                                 <label className="form-label" htmlFor="password">Password</label>
                                 <input
                                     name="password"
@@ -101,14 +102,14 @@ export default function Login() {
                             </div>
 
                             <div className="form-row button-login">
-                                <button className="btn btn-login">Sign in</button>
+                                <button className="btn btn-login">Sign in <i className="fas fa-arrow-right"></i></button>
                             </div>
                         </div>
                     </form>
                 </div>
 
                 <div className="register">
-                    <i className="fas fa-user-circle"></i>
+                    <i className="fas fa-cicle-user"></i>
                     <strong>Create account!</strong>
                     <form onSubmit={handleSubmitSignup}>
                         <fieldset>
@@ -129,7 +130,7 @@ export default function Login() {
                                     <input name="password" type="password" className="form-text" placeholder="enter a password" onChange={handleFormSignup} />
                                 </div>
                                 <div className="form-row button-login">
-                                    <button className="btn btn-login">Create</button>
+                                    <button className="btn btn-login">Create <i class="fas fa-arrow-right"></i></button>
                                 </div>
                             </div>
                         </fieldset>
