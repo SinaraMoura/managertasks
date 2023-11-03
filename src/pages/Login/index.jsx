@@ -69,7 +69,7 @@ export default function Login() {
     }, [])
 
     return (
-        <main className='container container__login'>
+        <main className=' container__login'>
             <section className="container">
                 <div className="login">
                     <i className="fas fa-sign-in-alt"></i>

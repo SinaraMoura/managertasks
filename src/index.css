@@ -7,7 +7,7 @@
 
 :root {
   font-size: 10px;
-
+  min-height: 100vh;
   /* variables */
 
   --white-900: #f2f4f7;
@@ -16,6 +16,7 @@
 }
 
 body {
+  height: 100%;
   background: var(--white-900);
   margin: 0;
   padding: 0;
@@ -32,11 +33,10 @@ button {
   cursor: pointer;
 }
 
-.container {
+/* .container {
   width: 100vw;
-  margin: auto;
   padding: 2rem;
-}
+} */
 
 
 .content {
