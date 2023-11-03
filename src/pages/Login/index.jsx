@@ -109,7 +109,7 @@ export default function Login() {
                 </div>
 
                 <div className="register">
-                    <i className="fas fa-cicle-user"></i>
+                    <i className="fas fa-user-circle"></i>
                     <strong>Create account!</strong>
                     <form onSubmit={handleSubmitSignup}>
                         <fieldset>
